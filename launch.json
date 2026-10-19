@@ -1,0 +1,10 @@
+{
+  "kind": "evm_contracts",
+  "contracts": [
+    {
+      "contract": "BetPool",
+      "constructorArgs": []
+    }
+  ],
+  "notes": "BetPool is NIGHTSHIFT's live pari-mutuel betting pool for its skill games and Agent Arena. Its constructor takes no arguments and makes no external calls: the owner (0x6C4c78f2C3bDf4C4318Fe305FB1C8BC1694d19b5), the IMD token (0xD34a99Bc0f67aE1bbd63C660e6d0b0dd03E263B7), the SHIFT token (0xE5e58E53d0Bb204Aa62c995A6c8CC8a48e60C3AC), the fee splitter (0x1119d5Df2f046bC2d3c0F6279EF2E9cE49422d44), the 5% losing-side fee and the hard caps (10000 IMD, 500000000 SHIFT per bet) are compile-time constants, and the default per-bet limits (IMD 0.1 to 500, SHIFT 1000 to 25000000 whole tokens) are set in the constructor. The EIP-712 domain is NightshiftBets version 1 on chain id 1 bound to this contract. The result signer starts unset; after deployment the owner must call setSigner(address) with the NIGHTSHIFT server's result signer before any market can be created, bet on or settled. The owner can only rotate the signer, change limits within the hard caps and pause new markets and bets; settle, expire and claim keep working while paused. There is no upgradeability, delegatecall, selfdestruct, ownership transfer or token sweep, and the owner has no path to move bettors' funds."
+}
